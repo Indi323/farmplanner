@@ -1,8 +1,8 @@
 # farmplanner
 # 🌱 DST Garden Planner — Планировщик огорода
 
-**An interactive garden planner for Don't Starve Together.**  
 **Интерактивный планировщик огорода для Don't Starve Together.**
+### https://krauser323.github.io/farmplanner/
 
 Инструмент для поиска оптимальных схем посадки культур с учётом баланса нутриентов, сезонности и визуальной симметрии.
 
@@ -23,9 +23,14 @@
 - **Редактирование грядки** — загрузка готовых схем и возможность самостоятельно размещать растения.
 - **Расчёт нутриентов** — наглядное отображение баланса нутриентов и состава посадок.
 
-
 ## 🇬🇧 English
 
+# 🌱 DST Garden Planner — Планировщик огорода
+
+**An interactive garden planner for Don't Starve Together.** 
+### https://krauser323.github.io/farmplanner/
+
+A tool for finding optimal crop planting patterns that take into account nutrient balance, seasonality, and visual symmetry.
 ### ✨ Features
 
 - **Crop combination finder** — automatically generates planting layouts with a `0 / 0 / 0` nutrient balance in each garden quadrant.
