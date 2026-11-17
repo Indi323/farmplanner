@@ -1,4 +1,4 @@
-# farmplanner
+# Farmplanner
 # 🌱 DST Garden Planner — Планировщик огорода
 
 **Интерактивный планировщик огорода для Don't Starve Together.**
