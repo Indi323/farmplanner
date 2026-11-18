@@ -901,15 +901,30 @@
                 const matchesSpeciesCount = state.speciesCountFilter === 'all' ||
                     recipe.speciesCount === Number(state.speciesCountFilter);
                 return matchesCropSelection && matchesSpeciesCount;
-            }).sort((a, b) =>
-                b.occupiedCells - a.occupiedCells ||
-                (b.visualScore ?? getLayoutVisualScore(b.cells)) -
-                    (a.visualScore ?? getLayoutVisualScore(a.cells)) ||
-                b.speciesCount - a.speciesCount ||
-                a.items.map(item => item.crop.name).join('').localeCompare(
-                    b.items.map(item => item.crop.name).join('')
-                )
+        }).sort((a, b) => {
+    // Приоритет схем по количеству выбранных культур
+    if (!state.onlySelectedCrops && selectedIds.size > 0) {
+        const countSelectedCrops = recipe =>
+            recipe.items.reduce(
+                (count, item) => count + (selectedIds.has(item.crop.id) ? 1 : 0),
+                0
             );
+
+        const difference =
+            countSelectedCrops(b) - countSelectedCrops(a);
+
+        if (difference !== 0) return difference;
+    }
+
+    // Прежняя сортировка внутри каждой группы
+    return b.occupiedCells - a.occupiedCells ||
+        (b.visualScore ?? getLayoutVisualScore(b.cells)) -
+            (a.visualScore ?? getLayoutVisualScore(a.cells)) ||
+        b.speciesCount - a.speciesCount ||
+        a.items.map(item => item.crop.name).join('').localeCompare(
+            b.items.map(item => item.crop.name).join('')
+        );
+        });
 
             const fieldLabel = '6×6';
             titleEl.textContent = `Самобалансирующиеся схемы ${fieldLabel} · ${seasonObj.name} (${recipes.length})`;
